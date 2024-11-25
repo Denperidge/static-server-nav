@@ -1,0 +1,26 @@
+{
+  "name": "static-server-nav",
+  "version": "0.1.0",
+  "description": "Create a simple, static navigation page for your hosted services!",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Denperidge/static-server-nav.git"
+  },
+  "author": "Denperidge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Denperidge/static-server-nav/issues"
+  },
+  "homepage": "https://github.com/Denperidge/static-server-nav#readme",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@picocss/pico": "^2.0.6",
+    "glob": "^11.0.0"
+  }
+}
