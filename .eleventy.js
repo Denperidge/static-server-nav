@@ -41,7 +41,6 @@ function getConfig(eleventyConfig) {
         if (image === undefined) {
             return {title, url}
         } else {
-            console.log("defiend")
             eleventyConfig.addPassthroughCopy(image.src)
             return {
                 title: title, 
