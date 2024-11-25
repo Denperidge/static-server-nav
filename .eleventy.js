@@ -9,14 +9,14 @@ export const config = {
 }
 
 function getConfig(eleventyConfig) {
-    const rawLinks = JSON.parse(readFileSync(
-        "config/links.json", { encoding: "utf8" })
+    const config = JSON.parse(readFileSync(
+        "config/config.json", { encoding: "utf8" })
     );
-    console.log("Read links.json...")
+
     const images = globSync("config/*[!json]").map((image) => {
         let match = image.split(".")[0].toLowerCase();
         if (match.includes("/")) {
-            match = match.split("/").pop()
+            match = match.split("/").pop();
         }
         return { 
             match: match,
@@ -24,7 +24,7 @@ function getConfig(eleventyConfig) {
         }
     });
 
-    const links = rawLinks.map(linkObj => {
+    config.links = config.links.map(linkObj => {
         let [title, url] = linkObj;
         const titleMatch = title.match(/.*?(?= |$)/)[0].toLowerCase()
 
@@ -44,13 +44,10 @@ function getConfig(eleventyConfig) {
 
     })
 
-    console.log("2222")
-    console.log(links)
-    return links;
+    return config;
 }
 
 export default function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("node_modules/@picocss/pico/css/pico.yellow.min.css")
-
-    eleventyConfig.addGlobalData("links", getConfig(eleventyConfig));
+    eleventyConfig.addGlobalData("config", getConfig(eleventyConfig));
 }
