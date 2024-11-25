@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.yellow.min.css">
+    <style>
+      body {
+        text-align: center;
+      }
+      ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        list-style-type: none;
+        gap: 35px;
+      }
+      ul li {
+        max-width: 33%;
+        list-style: none;
+      }
+    </style>
 </head>
 <body>
-    <h1>Meow</h1>
-    {% for link in links %}
-        <a href="{{link[1]}}">{{ link[0] }}</p>
-    {% endfor %}
+    <main role="navigation">
+            <h1>Simple Server Nav</h1>
+            <ul>
+                {% for link in links %}
+                    <li>
+                        <article>
+                            <a href="{{link.url}}">
+                                {% if link.src %}
+                                    <img src="{{link.src}}" alt="{{link.alt}}">
+                                {% endif %}
+                                <h2>{{ link.title }}</h2>
+                            </a>
+
+                        </article>
+                    </li>
+                {% endfor %}
+            </ul>
+
+    </main>
+
 </body>
 </html>
