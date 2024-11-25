@@ -12,6 +12,7 @@
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@picocss/pico": "^2.0.6",
+    "adm-zip": "^0.5.16",
     "glob": "^11.0.0"
   },
   "homepage": "https://github.com/Denperidge/static-server-nav#readme",

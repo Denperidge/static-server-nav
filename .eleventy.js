@@ -1,6 +1,8 @@
 import { readFileSync, existsSync } from "fs";
+import {join} from "path"
+import { cwd } from "process";
 import { globSync } from "glob";
-
+import admZip from "adm-zip"; "adm-zip";
 export const config = {
     dir: {
         input: "src",
@@ -57,4 +59,14 @@ function getConfig(eleventyConfig) {
 export default function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("node_modules/@picocss/pico/css/pico.yellow.min.css")
     eleventyConfig.addGlobalData("config", getConfig(eleventyConfig));
+
+    eleventyConfig.on("eleventy.after", async ({dir, results, runMode, outputMode}) => {
+        const outputDir = join(cwd(), dir.output);
+        console.log(`- Built static-server-nav at ${outputDir}`)
+
+        const zip = new admZip();
+        zip.addLocalFolder(dir.output)
+        zip.writeZip("dist.zip");
+        console.log(`- Zipped static-server-nav build to ${join(cwd(), "dist.zip")}`)
+    });
 }
