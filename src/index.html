@@ -6,8 +6,21 @@
     <title>{{config.title | default: "Static Server Nav"}}</title>
     <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.yellow.min.css">
     <style>
+      {% if config.background %}
+        html {
+
+            background-image: url("{{config.background}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        article, h1 {
+            background-color: rgba(255, 255, 255, 0.47);
+        }
+      {% endif %}
       body {
         text-align: center;
+        margin: 0;
+        padding: 0;
       }
       ul {
         padding: 0;
@@ -20,11 +33,15 @@
       ul li {
         list-style: none;
       }
+      h1 {
+        padding: 15px;
+      }
     </style>
 </head>
 <body>
     <main role="navigation">
         <h1>{{ config.title | default: "Simple Server Nav" }}</h1>
+        <hr>
         <ul>
             {% for link in config.links %}
                 <li>

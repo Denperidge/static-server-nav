@@ -18,11 +18,18 @@ function getConfig(eleventyConfig) {
         if (match.includes("/")) {
             match = match.split("/").pop();
         }
+
+        if (match == "background" || match == "bg") {
+            eleventyConfig.addPassthroughCopy(image)
+            config.background = image;
+        }
+
         return { 
             match: match,
             src: image
         }
     });
+
 
     config.links = config.links.map(linkObj => {
         let [title, url] = linkObj;
