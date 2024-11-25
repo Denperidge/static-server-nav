@@ -10,36 +10,36 @@
         text-align: center;
       }
       ul {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        list-style-type: none;
-        gap: 35px;
+        padding: 0;
+        display: grid;
+        gap: 25px;
+        grid-template-columns: repeat(auto-fit, 300px);
+        justify-content: center;
+        align-items: center;
       }
       ul li {
-        max-width: 33%;
         list-style: none;
       }
     </style>
 </head>
 <body>
     <main role="navigation">
-            <h1>Simple Server Nav</h1>
-            <ul>
-                {% for link in links %}
-                    <li>
-                        <article>
-                            <a href="{{link.url}}">
-                                {% if link.src %}
-                                    <img src="{{link.src}}" alt="{{link.alt}}">
-                                {% endif %}
-                                <h2>{{ link.title }}</h2>
-                            </a>
+        <h1>Simple Server Nav</h1>
+        <ul>
+            {% for link in links %}
+                <li>
+                    <article>
+                        <a href="{{link.url}}">
+                            {% if link.src %}
+                                <img src="{{link.src}}" alt="{{link.alt}}">
+                            {% endif %}
+                            <h2>{{ link.title }}</h2>
+                        </a>
 
-                        </article>
-                    </li>
-                {% endfor %}
-            </ul>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
 
     </main>
 
